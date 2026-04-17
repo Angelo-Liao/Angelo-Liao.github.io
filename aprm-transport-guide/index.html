@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting to Taichung · APRM Travel Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1c1c1e;
+  --paper: #f7f4ef;
+  --warm-white: #fffdf8;
+  --rule: #ddd8cc;
+  --muted: #888070;
+  --accent-red: #b03a2e;
+  --accent-teal: #1e6b6b;
+  --accent-gold: #a07820;
+  --tag-hsr: #1e5c8a;
+  --tag-tra: #2e7d4f;
+  --tag-mrt: #6a3d9a;
+  --tag-bus: #a06020;
+  --easycard-blue: #1a5276;
+  --rec-bg: #edf6f3;
+  --rec-border: #2e7d4f;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--paper);color:var(--ink);line-height:1.72;}
+
+/* HERO */
+.hero{background:var(--ink);color:var(--paper);padding:5rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(255,255,255,0.02) 40px,rgba(255,255,255,0.02) 41px);}
+.hero-inner{max-width:820px;margin:0 auto;position:relative;}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:1.1rem;}
+.hero h1{font-family:'Libre Baskerville',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:700;line-height:1.15;margin-bottom:1rem;}
+.hero h1 em{font-style:italic;color:#a8d8b8;}
+.hero-sub{font-size:1rem;color:rgba(247,244,239,0.65);max-width:520px;margin-bottom:2.5rem;}
+.route-pill{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:0.45rem 1rem;font-family:'DM Mono',monospace;font-size:0.8rem;color:rgba(247,244,239,0.8);}
+.route-pill .arrow{color:var(--accent-gold);}
+
+/* NAV */
+.tab-nav{background:var(--warm-white);border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.06);}
+.tab-nav-inner{max-width:820px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+.tab-nav-inner::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:1rem 1.3rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:500;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.tab-btn:hover{color:var(--ink);}
+.tab-btn.active{color:var(--ink);border-bottom-color:var(--ink);}
+
+/* MAIN */
+.content{max-width:820px;margin:0 auto;padding:0 2rem 6rem;}
+.section{display:none;padding-top:3rem;}
+.section.active{display:block;}
+
+/* RECOMMENDATION */
+.rec-banner{background:var(--rec-bg);border-left:3px solid var(--rec-border);border-radius:0 8px 8px 0;padding:1rem 1.4rem;margin-bottom:2.5rem;display:flex;align-items:flex-start;gap:0.8rem;}
+.rec-icon{font-size:1.3rem;flex-shrink:0;margin-top:0.1rem;}
+.rec-banner p{font-size:0.88rem;line-height:1.6;}
+.rec-banner strong{color:var(--rec-border);}
+
+/* ROUTE CARD */
+.route-card{background:var(--warm-white);border:1px solid var(--rule);border-radius:12px;margin-bottom:2.5rem;overflow:hidden;transition:box-shadow 0.2s;}
+.route-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+.route-header{padding:1.4rem 1.6rem 1.2rem;border-bottom:1px solid var(--rule);display:flex;align-items:flex-start;gap:1rem;}
+.route-num{font-family:'Libre Baskerville',serif;font-size:2rem;font-weight:700;color:var(--rule);line-height:1;flex-shrink:0;}
+.route-title h2{font-family:'Libre Baskerville',serif;font-size:1.15rem;font-weight:700;margin-bottom:0.25rem;}
+.route-title .subtitle{font-size:0.82rem;color:var(--muted);}
+.route-meta{display:flex;gap:1.5rem;padding:1rem 1.6rem;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.meta-item{display:flex;flex-direction:column;gap:0.15rem;}
+.meta-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.meta-value{font-size:0.92rem;font-weight:500;}
+.meta-value.best{color:var(--rec-border);}
+.route-body{padding:1.4rem 1.6rem;}
+
+/* TAGS */
+.transport-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem;}
+.tag{font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:500;letter-spacing:0.08em;padding:0.2rem 0.6rem;border-radius:4px;color:white;}
+.tag-hsr{background:var(--tag-hsr);}
+.tag-tra{background:var(--tag-tra);}
+.tag-mrt{background:var(--tag-mrt);}
+.tag-bus{background:var(--tag-bus);}
+
+/* JOURNEY STEPS */
+.journey-steps{display:flex;flex-direction:column;gap:0;margin:1.2rem 0;}
+.step{display:flex;gap:1rem;position:relative;}
+.step-connector{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:28px;}
+.step-dot{width:11px;height:11px;border-radius:50%;background:var(--ink);border:2px solid var(--ink);flex-shrink:0;margin-top:0.35rem;}
+.step-dot.origin{background:var(--accent-teal);border-color:var(--accent-teal);}
+.step-dot.dest{background:var(--accent-red);border-color:var(--accent-red);}
+.step-line{width:1.5px;flex:1;background:var(--rule);min-height:24px;margin:2px 0;}
+.step-content{padding-bottom:1.2rem;flex:1;}
+.step-name{font-size:0.9rem;font-weight:600;}
+.step-detail{font-size:0.8rem;color:var(--muted);margin-top:0.1rem;}
+.step-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.68rem;padding:0.1rem 0.45rem;border-radius:3px;color:white;margin-top:0.3rem;}
+
+/* NOTES */
+.note{background:#fffbf0;border:1px solid #e8d88a;border-radius:6px;padding:0.75rem 1rem;font-size:0.82rem;color:#5a4b10;margin-top:1rem;}
+.note::before{content:'💡 ';}
+.warning{background:#fff5f5;border:1px solid #e8b4b4;border-radius:6px;padding:0.75rem 1rem;font-size:0.82rem;color:#7a1a1a;margin-top:0.75rem;}
+.warning::before{content:'⚠️ ';}
+
+/* LINKS */
+.link-list{margin-top:1rem;display:flex;flex-direction:column;gap:0.4rem;}
+.ext-link{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.82rem;color:var(--accent-teal);text-decoration:none;font-weight:500;transition:opacity 0.15s;}
+.ext-link:hover{opacity:0.7;text-decoration:underline;}
+.ext-link::after{content:'↗';font-size:0.7rem;}
+
+/* EASYCARD */
+.easycard-hero{background:var(--easycard-blue);color:white;border-radius:12px;padding:2rem 1.8rem;margin-bottom:2rem;position:relative;overflow:hidden;}
+.easycard-hero::after{content:'悠遊卡';position:absolute;right:-0.5rem;top:50%;transform:translateY(-50%);font-size:5rem;opacity:0.07;font-family:'Libre Baskerville',serif;pointer-events:none;}
+.easycard-hero h2{font-family:'Libre Baskerville',serif;font-size:1.5rem;margin-bottom:0.4rem;}
+.easycard-hero p{font-size:0.88rem;opacity:0.8;max-width:480px;}
+.easycard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-bottom:2rem;}
+.ec-card{background:var(--warm-white);border:1px solid var(--rule);border-radius:10px;padding:1.2rem 1.3rem;}
+.ec-card-icon{font-size:1.5rem;margin-bottom:0.6rem;}
+.ec-card h3{font-size:0.9rem;font-weight:600;margin-bottom:0.4rem;}
+.ec-card p,.ec-card li{font-size:0.82rem;color:var(--muted);line-height:1.6;}
+.acceptance-table{width:100%;border-collapse:collapse;font-size:0.83rem;margin-top:1rem;}
+.acceptance-table th{text-align:left;font-weight:600;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);padding:0.5rem 0.8rem;border-bottom:2px solid var(--rule);}
+.acceptance-table td{padding:0.65rem 0.8rem;border-bottom:1px solid var(--rule);vertical-align:middle;}
+.acceptance-table tr:last-child td{border-bottom:none;}
+.yes{color:var(--rec-border);font-weight:600;}
+.no{color:var(--accent-red);font-weight:600;}
+.partial{color:var(--accent-gold);font-weight:600;}
+.buy-steps{counter-reset:buy;display:flex;flex-direction:column;gap:0.8rem;margin:1.2rem 0;}
+.buy-step{display:flex;gap:1rem;align-items:flex-start;}
+.buy-step::before{counter-increment:buy;content:counter(buy);font-family:'Libre Baskerville',serif;font-size:0.9rem;font-weight:700;background:var(--ink);color:white;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:0.15rem;}
+.buy-step p{font-size:0.88rem;}
+
+/* SECTION TITLE */
+.section-title{font-family:'Libre Baskerville',serif;font-size:1.5rem;font-weight:700;margin-bottom:0.3rem;}
+.section-intro{color:var(--muted);font-size:0.88rem;margin-bottom:2rem;max-width:560px;}
+
+/* COMPARE TABLE */
+.compare-wrap{overflow-x:auto;margin-bottom:2rem;}
+.compare-table{width:100%;min-width:560px;border-collapse:collapse;font-size:0.83rem;}
+.compare-table th{padding:0.7rem 1rem;text-align:left;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);border-bottom:2px solid var(--rule);white-space:nowrap;}
+.compare-table td{padding:0.9rem 1rem;border-bottom:1px solid var(--rule);vertical-align:top;}
+.compare-table tr.highlight{background:#edf6f3;}
+.compare-table tr.highlight td:first-child{border-left:3px solid var(--rec-border);}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .hero{padding:3.5rem 1.2rem 3rem;}
+  .content{padding:0 1.2rem 4rem;}
+  .route-meta{gap:1rem;}
+  .tab-btn{padding:0.85rem 1rem;font-size:0.78rem;}
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.section.active .route-card,.section.active .ec-card,.section.active .easycard-hero{animation:fadeUp 0.35s ease both;}
+.section.active .route-card:nth-child(2){animation-delay:0.07s;}
+.section.active .route-card:nth-child(3){animation-delay:0.14s;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">APRM Participant Guide · Transportation</div>
+    <h1>Getting from<br><em>Taoyuan Airport</em><br>to Taichung</h1>
+    <p class="hero-sub">Three reliable options to reach Taichung Train Station, with EasyCard tips for getting around Taiwan.</p>
+    <div class="route-pill">
+      <span>Taoyuan Int'l Airport (TPE)</span>
+      <span class="arrow">→</span>
+      <span>Taichung Train Station</span>
+    </div>
+  </div>
+</div>
+
+<nav class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" onclick="showTab('overview',this)">Overview</button>
+    <button class="tab-btn" onclick="showTab('route1',this)">⭐ Option 1: HSR + TRA</button>
+    <button class="tab-btn" onclick="showTab('route2',this)">Option 2: Airport MRT + TRA</button>
+    <button class="tab-btn" onclick="showTab('route3',this)">Option 3: Highway Bus</button>
+    <button class="tab-btn" onclick="showTab('easycard',this)">EasyCard 悠遊卡</button>
+  </div>
+</nav>
+
+<div class="content">
+
+  <!-- OVERVIEW -->
+  <section class="section active" id="overview">
+    <p class="section-title">Choose Your Route</p>
+    <p class="section-intro">All three options depart from Taoyuan International Airport and end at Taichung Train Station (台中火車站). Pick based on your priorities.</p>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Option</th><th>Mode</th><th>Duration</th><th>Cost (TWD)</th><th>Luggage-Friendly</th></tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td><strong>⭐ Option 1</strong><br><span style="font-size:0.78rem;color:var(--muted)">Recommended</span></td>
+            <td>Shuttle → HSR → TRA</td>
+            <td><strong style="color:var(--rec-border)">~60 min</strong></td>
+            <td>~570</td>
+            <td>★★★★★</td>
+          </tr>
+          <tr>
+            <td><strong>Option 2</strong></td>
+            <td>Airport MRT → TRA</td>
+            <td>~2–2.5 hrs</td>
+            <td>~270–370</td>
+            <td>★★☆☆☆</td>
+          </tr>
+          <tr>
+            <td><strong>Option 3</strong></td>
+            <td>Highway Bus (Direct)</td>
+            <td>~2.5–3 hrs</td>
+            <td>~300–330</td>
+            <td>★★★★☆</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rec-banner">
+      <span class="rec-icon">✅</span>
+      <p><strong>Our recommendation for APRM participants:</strong> Option 1 (HSR + TRA) is fastest, with excellent English signage throughout. The HSR station is co-located with Xinwuri TRA Station — the transfer is a 5-minute indoor walk, very manageable with luggage.</p>
+    </div>
+    <div class="note" style="margin-top:0;">Click any tab above for step-by-step instructions. See the <strong>EasyCard</strong> tab to learn about Taiwan's transit smart card — essential for local trains and city buses.</div>
+  </section>
+
+  <!-- ROUTE 1 -->
+  <section class="section" id="route1">
+    <p class="section-title">Option 1 · HSR + TRA</p>
+    <p class="section-intro">The fastest option. Take a short shuttle to Taoyuan HSR Station, ride the High Speed Rail to Taichung, then transfer indoors to a TRA local train.</p>
+    <div class="rec-banner">
+      <span class="rec-icon">⭐</span>
+      <p><strong>Top Recommendation</strong> — Fastest route with clear English signage at every transfer. Ideal for participants carrying luggage.</p>
+    </div>
+    <div class="route-card">
+      <div class="route-header">
+        <div class="route-num">01</div>
+        <div class="route-title">
+          <h2>High Speed Rail + Taiwan Railways</h2>
+          <div class="subtitle">Airport → Taoyuan HSR → Taichung HSR → Xinwuri → Taichung Station</div>
+        </div>
+      </div>
+      <div class="route-meta">
+        <div class="meta-item"><span class="meta-label">Total Time</span><span class="meta-value best">~50–60 min</span></div>
+        <div class="meta-item"><span class="meta-label">Total Cost</span><span class="meta-value">~570 TWD</span></div>
+        <div class="meta-item"><span class="meta-label">Transfers</span><span class="meta-value">2</span></div>
+        <div class="meta-item"><span class="meta-label">EasyCard</span><span class="meta-value">TRA leg only</span></div>
+      </div>
+      <div class="route-body">
+        <div class="transport-tags">
+          <span class="tag tag-bus">Shuttle Bus</span>
+          <span class="tag tag-hsr">HSR 高鐵</span>
+          <span class="tag tag-tra">TRA 台鐵</span>
+        </div>
+        <div class="journey-steps">
+          <div class="step">
+            <div class="step-connector"><div class="step-dot origin"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">Taoyuan International Airport (TPE)</div>
+              <div class="step-detail">Terminal 1 or Terminal 2 — arrivals hall, ground floor</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">Shuttle Bus → Taoyuan HSR Station</div>
+              <div class="step-detail">Buy ticket at the UBUS counter in the arrivals hall. Full fare: <strong>NT$30</strong>. Runs every 5–10 min, ~25 min ride. EasyCard is NOT accepted for this shuttle.</div>
+              <span class="step-badge" style="background:var(--tag-bus)">UBUS 統聯</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">Board HSR at Taoyuan Station (A18)</div>
+              <div class="step-detail">Buy a ticket to <strong>台中 Taichung</strong> at the vending machine or counter. Journey: ~36–40 min. Standard class: <strong>~NT$540</strong>. Non-reserved seats (自由座) are available without booking.</div>
+              <span class="step-badge" style="background:var(--tag-hsr)">HSR 高鐵</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">Taichung HSR → Walk to Xinwuri TRA Station</div>
+              <div class="step-detail">The two stations are <strong>connected indoors</strong>. Follow signs for "台鐵新烏日站" — about a 5-minute walk. No need to go outside.</div>
+              <span class="step-badge" style="background:#666">🚶 Indoor Walk ~5 min</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">TRA Commuter Train → Taichung Station</div>
+              <div class="step-detail">Take the 區間車 (commuter train). Tap your <strong>EasyCard</strong> or buy a ticket for ~NT$15. Takes ~10–15 min.</div>
+              <span class="step-badge" style="background:var(--tag-tra)">TRA 台鐵 區間車</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot dest"></div></div>
+            <div class="step-content">
+              <div class="step-name">✓ Taichung Station 台中車站</div>
+            </div>
+          </div>
+        </div>
+        <div class="note">Book HSR tickets in advance (up to 29 days ahead) at the official website or T Express app. Non-reserved seats are almost always available on the day.</div>
+        <div class="note" style="margin-top:0.6rem;">EasyCard works perfectly for the final TRA commuter train from Xinwuri to Taichung.</div>
+        <div class="link-list">
+          <a class="ext-link" href="https://en.thsrc.com.tw/" target="_blank">Taiwan High Speed Rail — Official Site (EN)</a>
+          <a class="ext-link" href="https://tip.railway.gov.tw/" target="_blank">Taiwan Railways (TRA) — Timetable &amp; Booking (EN)</a>
+          <a class="ext-link" href="https://maps.app.goo.gl/taichunghsr" target="_blank">Google Maps: Xinwuri TRA → Taichung Station</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROUTE 2 -->
+  <section class="section" id="route2">
+    <p class="section-title">Option 2 · Airport MRT + TRA</p>
+    <p class="section-intro">Take the Airport MRT south to Zhongli, then board a TRA intercity train. A budget-friendly option for travellers comfortable with a street-level transfer.</p>
+    <div class="route-card">
+      <div class="route-header">
+        <div class="route-num">02</div>
+        <div class="route-title">
+          <h2>Airport MRT + Taiwan Railway</h2>
+          <div class="subtitle">Airport → A22 Laojie River (MRT) → walk → Zhongli TRA → Taichung Station</div>
+        </div>
+      </div>
+      <div class="route-meta">
+        <div class="meta-item"><span class="meta-label">Total Time</span><span class="meta-value">~2–2.5 hrs</span></div>
+        <div class="meta-item"><span class="meta-label">Total Cost</span><span class="meta-value">~270–370 TWD</span></div>
+        <div class="meta-item"><span class="meta-label">Transfers</span><span class="meta-value">2 + street walk</span></div>
+        <div class="meta-item"><span class="meta-label">EasyCard</span><span class="meta-value">MRT leg ✓</span></div>
+      </div>
+      <div class="route-body">
+        <div class="transport-tags">
+          <span class="tag tag-mrt">Airport MRT 機捷</span>
+          <span class="tag tag-tra">TRA 台鐵</span>
+        </div>
+        <div class="journey-steps">
+          <div class="step">
+            <div class="step-connector"><div class="step-dot origin"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">Taoyuan Airport Terminal 1 (A12) / Terminal 2 (A13)</div>
+              <div class="step-detail">Follow signs for 機場捷運 Airport MRT. EasyCard accepted at gates.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">Ride to A22 Laojie River Station 老街溪站</div>
+              <div class="step-detail">Take the <strong>blue Commuter Train</strong> (not the purple Express). A22 is the current southern terminus. Fare: ~NT$30–50 from airport, ~20–30 min ride.</div>
+              <span class="step-badge" style="background:var(--tag-mrt)">Airport MRT Commuter</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">Walk to Zhongli TRA Station 中壢火車站</div>
+              <div class="step-detail">~10–15 min walk from A22. Note: the Zhongli area is under active underground rail construction — signage may be complex.</div>
+              <span class="step-badge" style="background:#666">🚶 Walk 10–15 min</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">TRA Train → Taichung Station</div>
+              <div class="step-detail">Take an express train (自強號 or 莒光號) towards 台中. Travel ~1.5–2 hrs. Fare: ~NT$250–340. Buy paper ticket at the counter or machine.</div>
+              <span class="step-badge" style="background:var(--tag-tra)">TRA 台鐵</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot dest"></div></div>
+            <div class="step-content"><div class="step-name">✓ Taichung Station 台中車站</div></div>
+          </div>
+        </div>
+        <div class="warning">Zhongli station area has active construction. The outdoor walk from the MRT to TRA can be confusing. <strong>Not recommended</strong> for travellers with heavy luggage.</div>
+        <div class="link-list">
+          <a class="ext-link" href="https://www.tymetro.com.tw/tymetro-new/en/index.php" target="_blank">Taoyuan Metro (Airport MRT) — Official Site (EN)</a>
+          <a class="ext-link" href="https://tip.railway.gov.tw/" target="_blank">Taiwan Railways (TRA) — Timetable &amp; Booking (EN)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROUTE 3 -->
+  <section class="section" id="route3">
+    <p class="section-title">Option 3 · Highway Bus</p>
+    <p class="section-intro">A direct coach from the airport to the Taichung area. Minimum effort — just buy a ticket and sit back for the ride.</p>
+    <div class="route-card">
+      <div class="route-header">
+        <div class="route-num">03</div>
+        <div class="route-title">
+          <h2>Direct Highway Bus</h2>
+          <div class="subtitle">Airport → Chaoma 朝馬 → Taichung Station via express coach + city bus</div>
+        </div>
+      </div>
+      <div class="route-meta">
+        <div class="meta-item"><span class="meta-label">Total Time</span><span class="meta-value">~2.5–3 hrs</span></div>
+        <div class="meta-item"><span class="meta-label">Total Cost</span><span class="meta-value">~300–330 TWD</span></div>
+        <div class="meta-item"><span class="meta-label">Transfers</span><span class="meta-value">1 (at Chaoma)</span></div>
+        <div class="meta-item"><span class="meta-label">EasyCard</span><span class="meta-value">City bus only</span></div>
+      </div>
+      <div class="route-body">
+        <div class="transport-tags">
+          <span class="tag tag-bus">UBUS 統聯 Route 1623</span>
+          <span class="tag tag-bus">City Bus 幹線公車</span>
+        </div>
+        <div class="journey-steps">
+          <div class="step">
+            <div class="step-connector"><div class="step-dot origin"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">Taoyuan Airport — Arrivals Hall, Ground Floor</div>
+              <div class="step-detail">Buy ticket at the <strong>UBUS 統聯</strong> or Kuo-Kuang 國光 counter. Full fare: <strong>~NT$300</strong>. Cash or card at the counter — EasyCard is NOT accepted.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">Board Route 1623 (UBUS) or Route 1860 (Kuo-Kuang)</div>
+              <div class="step-detail">Direct coach to Taichung. Departs approx. every 50–60 min, 06:15–00:05. Journey: ~2.5–3 hrs depending on traffic. Luggage stored in the hold below.</div>
+              <span class="step-badge" style="background:var(--tag-bus)">Route 1623 / 1860</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot"></div><div class="step-line"></div></div>
+            <div class="step-content">
+              <div class="step-name">Alight at Chaoma Station 朝馬站</div>
+              <div class="step-detail">Transfer to city bus towards Taichung Train Station. Take routes <strong>300, 301, or 310</strong> (Taiwan Boulevard Trunk Line). <strong>EasyCard accepted.</strong> ~20–30 min to the station.</div>
+              <span class="step-badge" style="background:var(--tag-bus)">City Bus 幹線公車 300/301/310</span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-connector"><div class="step-dot dest"></div></div>
+            <div class="step-content"><div class="step-name">✓ Taichung Station 台中車站</div></div>
+          </div>
+        </div>
+        <div class="note">Great option if you want to nap on the way. However, travel time can increase significantly during rush hours (07:00–09:00, 17:00–19:30) due to highway congestion.</div>
+        <div class="warning">City buses at Chaoma can get very crowded during rush hours. Large luggage is difficult to manage on crowded buses.</div>
+        <div class="link-list">
+          <a class="ext-link" href="https://www.ubus.com.tw/" target="_blank">UBUS 統聯客運 — Official Website</a>
+          <a class="ext-link" href="https://www.taoyuan-airport.com/buses?lang=en" target="_blank">Taoyuan Airport — Bus Info (EN)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EASYCARD -->
+  <section class="section" id="easycard">
+    <div class="easycard-hero">
+      <h2>EasyCard · 悠遊卡</h2>
+      <p>Taiwan's universal transit smart card. Works like an Oyster Card or IC Card — tap in, tap out. Essential for TRA local trains and city buses in Taichung.</p>
+    </div>
+
+    <p class="section-title" style="margin-bottom:0.25rem;">Where to Buy</p>
+    <p class="section-intro">You can get an EasyCard right after landing at Taoyuan Airport.</p>
+
+    <div class="easycard-grid">
+      <div class="ec-card">
+        <div class="ec-card-icon">🏦</div>
+        <h3>At the Airport <span style="color:var(--rec-border);font-size:0.75rem;">(Recommended)</span></h3>
+        <p>Go to the <strong>EZFly counter</strong> (桃園機場捷運服務台) on the B1 level near the Airport MRT gates. Price: <strong>NT$300</strong> total (NT$100 deposit + NT$200 stored value). <strong>Credit card accepted</strong> — this is one of the few places where you can buy with a card.</p>
+      </div>
+      <div class="ec-card">
+        <div class="ec-card-icon">🚇</div>
+        <h3>At MRT Station Machines</h3>
+        <p>All MRT station ticket machines sell EasyCards. Cost: NT$100 deposit (non-refundable) + any stored value. Add value with cash at machines or service windows.</p>
+      </div>
+      <div class="ec-card">
+        <div class="ec-card-icon">🏪</div>
+        <h3>Convenience Stores</h3>
+        <p>7-Eleven, FamilyMart, Hi-Life, and OK Mart all sell EasyCards. There are convenience stores inside every train station in Taiwan.</p>
+      </div>
+      <div class="ec-card">
+        <div class="ec-card-icon">📱</div>
+        <h3>Pre-order via Klook</h3>
+        <p>Order online before you arrive and pick up at the Klook kiosk in the arrivals hall (open 04:30–23:00). Pay by credit card in advance.</p>
+      </div>
+    </div>
+
+    <p class="section-title" style="margin-bottom:0.8rem;">How to Use</p>
+    <div class="buy-steps">
+      <div class="buy-step"><p>Purchase the card. The NT$100 deposit is <strong>non-refundable</strong>. Any remaining stored value can be refunded when you leave Taiwan.</p></div>
+      <div class="buy-step"><p>Add value (儲值) at any MRT station add-value machine or at a convenience store cashier. Simply tap the card on the reader and add cash. No registration required.</p></div>
+      <div class="buy-step"><p>At transit gates, tap the card firmly on the <strong>yellow sensor pad</strong> to enter and tap again to exit. The fare is automatically deducted.</p></div>
+      <div class="buy-step"><p>Your balance is shown on a small screen after each tap. Top up whenever you run low — machines and convenience stores across Taiwan can top you up in seconds.</p></div>
+    </div>
+
+    <p class="section-title" style="margin:2rem 0 0.5rem;">What Is the EasyCard Accepted For?</p>
+    <table class="acceptance-table">
+      <thead>
+        <tr><th>Transport / Service</th><th>EasyCard?</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-mrt" style="font-size:0.7rem">Airport MRT 機捷</span></td>
+          <td class="yes">✓ Yes</td>
+          <td>Tap in and out at all stations</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-tra" style="font-size:0.7rem">TRA Commuter Train 區間車</span></td>
+          <td class="yes">✓ Yes</td>
+          <td>Works for Xinwuri → Taichung and most short-distance routes</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-tra" style="font-size:0.7rem">TRA Express Train 自強/莒光</span></td>
+          <td class="partial">⚠ Partial</td>
+          <td>You can board, but no seat reservation — you may need to stand. Buy a paper ticket for a reserved seat.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hsr" style="font-size:0.7rem">HSR 高鐵</span></td>
+          <td class="no">✗ No</td>
+          <td>Regular EasyCards cannot tap into HSR. Buy a separate ticket at the station or online.</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-bus" style="font-size:0.7rem">Taichung City Bus 公車</span></td>
+          <td class="yes">✓ Yes</td>
+          <td>Routes 300, 301, 310 and most other city bus routes</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-bus" style="font-size:0.7rem">UBUS Shuttle (Airport→HSR)</span></td>
+          <td class="no">✗ No</td>
+          <td>Buy ticket at the counter with cash or card</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-bus" style="font-size:0.7rem">Highway Bus 統聯/國光</span></td>
+          <td class="no">✗ No</td>
+          <td>Buy ticket at the bus counter</td>
+        </tr>
+        <tr>
+          <td>7-Eleven / FamilyMart</td>
+          <td class="yes">✓ Yes</td>
+          <td>Pay for drinks, snacks, photocopies, and more</td>
+        </tr>
+        <tr>
+          <td>YouBike 公共自行車</td>
+          <td class="yes">✓ Yes</td>
+          <td>Unlock shared bicycles in Taichung city</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note" style="margin-top:1.2rem;">The NT$100 card deposit is non-refundable. Any remaining stored credit can be refunded at Taoyuan Airport information counters or the Airport MRT service booth before you fly home.</div>
+    <div class="link-list" style="margin-top:1rem;">
+      <a class="ext-link" href="https://www.easycard.com.tw/en/" target="_blank">EasyCard Corporation — Official Website (EN)</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  document.querySelector('.tab-nav').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>
