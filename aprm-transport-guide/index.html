@@ -171,7 +171,7 @@ body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--paper);co
 <nav class="tab-nav">
   <div class="tab-nav-inner">
     <button class="tab-btn active" onclick="showTab('overview',this)">Overview</button>
-    <button class="tab-btn" onclick="showTab('route1',this)">⭐ Option 1: HSR + TR</button>
+    <button class="tab-btn" onclick="showTab('route1',this)">Option 1: HSR + TR</button>
     <button class="tab-btn" onclick="showTab('route2',this)">Option 2: Airport MRT + TR</button>
     <button class="tab-btn" onclick="showTab('route3',this)">Option 3: Highway Bus</button>
     <button class="tab-btn" onclick="showTab('easycard',this)">EasyCard 悠遊卡</button>
@@ -191,7 +191,7 @@ body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--paper);co
         </thead>
         <tbody>
           <tr>
-            <td><strong>Option 1</strong></td>
+            <td><strong>Option 1</strong><br><span style="font-size:0.78rem;color:var(--muted)">Fastest</span></td>
             <td>Shuttle → HSR → TR</td>
             <td>~60 min</td>
             <td>~570</td>
@@ -204,10 +204,10 @@ body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--paper);co
             <td>~270–370</td>
             <td>★★☆☆☆</td>
           </tr>
-          <tr class="highlight">
-            <td><strong>⭐ Option 3</strong><br><span style="font-size:0.78rem;color:var(--muted)">Recommended</span></td>
+          <tr>
+            <td><strong>Option 3</strong><br><span style="font-size:0.78rem;color:var(--muted)">Most Convenient</span></td>
             <td>UBUS 1623 Main Line (Direct)</td>
-            <td><strong style="color:var(--rec-border)">~2.5–3 hrs</strong></td>
+            <td>~2.5–3 hrs</td>
             <td>~300</td>
             <td>★★★★★</td>
           </tr>
@@ -216,7 +216,7 @@ body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--paper);co
     </div>
     <div class="rec-banner">
       <span class="rec-icon">✅</span>
-      <p><strong>Our recommendation for APRM participants:</strong> Option 3 on the <strong>UBUS 1623 main line</strong> is now the simplest choice, because it can go directly to <strong>Taichung Train Station</strong> with no onward transfer. If the bus is marked <strong>1623A</strong>, that branch only goes to <strong>Chaoma</strong> and you will need an extra BRT / corridor-bus ride to the station.</p>
+      <p><strong>Quick guide:</strong> <strong>Option 1</strong> is the <strong>fastest</strong>. <strong>Option 3</strong> on the <strong>UBUS 1623 main line</strong> is the <strong>most convenient and most intuitive</strong> option, and it is also <strong>relatively affordable</strong>. If the bus is marked <strong>1623A</strong>, that branch only goes to <strong>Chaoma</strong> and you will need an extra BRT / corridor-bus ride to the station.</p>
     </div>
     <div class="note" style="margin-top:0;">Click any tab above for step-by-step instructions. See the <strong>EasyCard</strong> tab to learn about Taiwan's transit smart card — essential for local trains and city buses.</div>
   </section>
@@ -226,8 +226,8 @@ body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--paper);co
     <p class="section-title">Option 1 · HSR + TR</p>
     <p class="section-intro">The fastest option. Take a short shuttle to Taoyuan HSR Station, ride the High Speed Rail to Taichung, then transfer indoors to a TR local train.</p>
     <div class="rec-banner">
-      <span class="rec-icon">⭐</span>
-      <p><strong>Fastest rail option</strong> — Clear English signage at every transfer. A strong fallback if you prefer trains over the direct UBUS 1623 main-line coach.</p>
+      <span class="rec-icon">1</span>
+      <p><strong>Fastest option</strong> — Best if you want the shortest travel time and prefer a mostly rail-based journey with clear transfer signage.</p>
     </div>
     <div class="route-card">
       <div class="route-header">
@@ -379,10 +379,10 @@ body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--paper);co
   <!-- ROUTE 3 -->
   <section class="section" id="route3">
     <p class="section-title">Option 3 · Highway Bus</p>
-    <p class="section-intro">For the bus option, the key distinction is between the <strong>UBUS 1623 main line</strong> and <strong>1623A</strong>. The main line goes directly to Taichung Train Station and is our recommended bus choice. The 1623A branch stops at Chaoma and requires an extra BRT / corridor-bus transfer.</p>
+    <p class="section-intro">For the bus option, the key distinction is between the <strong>UBUS 1623 main line</strong> and <strong>1623A</strong>. The main line goes directly to Taichung Train Station and is the most convenient bus option. The 1623A branch stops at Chaoma and requires an extra BRT / corridor-bus transfer.</p>
     <div class="rec-banner">
       <span class="rec-icon">🚌</span>
-      <p><strong>Best bus choice:</strong> look for <strong>1623 (Main Line / 主線)</strong> so you can stay on the same coach all the way to the Taichung Station drop-off. If the sign says <strong>1623A</strong>, plan for one more transfer at Chaoma.</p>
+      <p><strong>Most convenient bus option:</strong> look for <strong>1623 (Main Line / 主線)</strong> so you can stay on the same coach all the way to the Taichung Station drop-off. If the sign says <strong>1623A</strong>, plan for one more transfer at Chaoma.</p>
     </div>
     <div class="route-card">
       <div class="route-header">
@@ -512,7 +512,7 @@ body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--paper);co
     <div class="easycard-grid">
       <div class="ec-card">
         <div class="ec-card-icon">🏦</div>
-        <h3>At the Airport <span style="color:var(--rec-border);font-size:0.75rem;">(Recommended)</span></h3>
+        <h3>At the Airport <span style="color:var(--rec-border);font-size:0.75rem;">(Most Convenient)</span></h3>
         <p>Go to the <strong>EZFly counter</strong> (桃園機場捷運服務台) on the B1 level near the Airport MRT gates. Price: <strong>NT$300</strong> total (NT$100 deposit + NT$200 stored value). <strong>Credit card accepted</strong> — this is one of the few places where you can buy with a card.</p>
       </div>
       <div class="ec-card">
